@@ -1,5 +1,15 @@
 *{
   padding: 0;
-  margin: 0; 
-  box 
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+    position: relative;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.3em 0;
 }
