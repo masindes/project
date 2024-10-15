@@ -1,8 +1,11 @@
 *{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+     padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-size: cover; /* This makes the image cover the whole background */
+     /* This prevents the image from repeating */
+  }
+  
 
 body{
     position: relative;
@@ -12,4 +15,13 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 1.3em 0;
+}
+nav{
+    background-color: rgb(220, 226, 214);
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+}
+.navbar.logo{
+    color: aliceblue;
+    text-align: center;
+    padding: 1.3rem 0;
 }
