@@ -22,6 +22,7 @@ nav{
 }
 .navbar.logo{
     color: aliceblue;
-    text-align: center;
-    padding: 1.3rem 0;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 4em;
 }
