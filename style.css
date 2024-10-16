@@ -25,11 +25,11 @@ nav{
     background-color: rgb(220, 226, 214);
     box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
 }
-h1{
+#logo{
     color: rgb(0, 0, 0);
     text-decoration: none;
     letter-spacing: 2px;
-    font-size: 4em;
+    font-size: 3em;
     margin-left: 10px;
 }
 #search-input{
@@ -38,7 +38,7 @@ h1{
    border: none;
    border-radius: 10px;
    font-size: 18px;
-   color: #f7f7f7;
+   color: #10708d;
 }
 #Search-button{
     padding: 10px 20px;
@@ -51,7 +51,7 @@ h1{
     margin-left: 5px;
     margin-right: 5px;
 }
-#bolg-container{
+#blog-container{
     padding: 3em 0;
     display: flex;
     justify-content: flex-start;
@@ -93,7 +93,7 @@ h1{
         padding: 0 20 px;
     }
     h1{
-        font-size: 1.8em;
+        font-size: 2em;
     }
     #search-input{
         width: 150px;
