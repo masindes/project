@@ -84,6 +84,7 @@ function displayBlogs(articles) {
     });
 }
 
+
 (async () => {
     try {
         const articles = await fetchRandomNews();
@@ -92,3 +93,8 @@ function displayBlogs(articles) {
         console.error("Error displaying blogs", error);
     } 
 })();
+
+// Theme Toggle Functionality
+themeToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+});

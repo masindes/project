@@ -1,11 +1,15 @@
 *{
-     padding: 0;
+    padding: 0px;
     margin: 0;
     box-sizing: border-box;
-    background-size: cover; /* This makes the image cover the whole background */
-     /* This prevents the image from repeating */
-  }
-  
+    background-size: #81c6e6;
+    color: #333;
+    transition:  background-color 0.3s,color 0.3s; 
+}
+main.body.dark-mode {
+    background-color: #333; /* Dark mode background */
+    color: #f4f4f4; /* Dark mode text color */
+}
 
 body{
     position: relative;
@@ -59,7 +63,6 @@ nav{
     display: flex;
     justify-content: flex-start;
     flex-wrap:wrap;
-    
 }
 .blog-card{
     width: 280px;
