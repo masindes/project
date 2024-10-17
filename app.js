@@ -2,7 +2,8 @@
 const blogContainer = document.getElementById("blogContainer");
 const apiKey = '7e6add09d1fa415088ac94d6924e3f1b';
  // Replace with your actual API key
-
+const searchField = document.getElementById('search-input');
+const searchButton = document.getElementById('Search-button');
 async function fetchRandomNews() {
     try {
         const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=10&apiKey=${apiKey}`;
@@ -37,15 +38,30 @@ function displayBlogs(articles) {
         img.alt = article.title;
 
         const title = document.createElement("h2");
-        title.textContent = article.title;
+        // the bellow code makes the tittle character to be less than 30 in the tittle section.
+        const truncatedTittle = article.title.length > 30? article.title.slice(0,30)
+          + "..." : article.title;
+        title.textContent = truncatedTittle;
 
         const description = document.createElement("p");
-        description.textContent = article.description;
+        description.textContent = description;
 
         blogCard.appendChild(img);
         blogCard.appendChild(title);
         blogCard.appendChild(description);
         blogContainer.appendChild(blogCard);
+
+        blogCard.addEventListener('click', () => {
+            if (description.style.display === 'none') {
+                description.style.display = 'block';
+                description.textContent = article.description + ' More content';
+            } else {
+                description.style.display = 'none';
+            }
+        });
+
+        blogContainer.appendChild(blogCard);
+        
     });
 }
 
