@@ -38,7 +38,7 @@ nav{
    border: none;
    border-radius: 10px;
    font-size: 18px;
-   color: #10708d;
+   color: #05c5ff;
 }
 #Search-button{
     padding: 10px 20px;
@@ -51,18 +51,22 @@ nav{
     margin-left: 5px;
     margin-right: 5px;
 }
+#Search-button:hover{
+    color: #ffbb00;
+}
 #blog-container{
-    padding: 3em 0;
+    padding: 3em 4em;
     display: flex;
     justify-content: flex-start;
     flex-wrap:wrap;
+    
 }
 .blog-card{
     width: 280px;
     border: 1px solid #797777;
     border-radius: 10px;
     cursor: pointer;
-    padding: 1em;
+    padding: 0.5em;
     margin: 10px;
 
 }
