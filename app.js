@@ -6,13 +6,36 @@ const searchField = document.getElementById('search-input');
 const searchButton = document.getElementById('Search-button');
 async function fetchRandomNews() {
     try {
-        const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=10&apiKey=${apiKey}`;
+        const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=12&apiKey=${apiKey}`;
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
             throw new Error('Network response was not ok' + response.statusText);
         }
 
+        const data = await response.json();
+        console.log(data);   // log data here
+        return data.articles;
+    } catch (error) {
+        console.error('Error fetching random news:', error);
+        return [];
+    }
+}
+searchButton.addEventListener('click', async ()=>{
+    const query = searchField.value.trim()
+    if(query !== ""){
+        try{
+            const articles = await fetchNewsQuery(query)
+            displayBlogs(articles);
+        }catch(error){
+            console.log("Error fetching news by query", error);
+        }
+    }
+})
+async function fetchNewsQuery(query) {
+    try {
+        const apiUrl = `https://newsapi.org/v2/everything?q=${query}&pageSize=12&apiKey=${apiKey}`;
+        const response = await fetch(apiUrl);
         const data = await response.json();
         return data.articles;
     } catch (error) {
@@ -49,19 +72,15 @@ function displayBlogs(articles) {
         blogCard.appendChild(img);
         blogCard.appendChild(title);
         blogCard.appendChild(description);
-        blogContainer.appendChild(blogCard);
-
-        blogCard.addEventListener('click', () => {
+        // Add event listener for click on each blog card to open the full article in a new tab
+        blogCard.addEventListener("click", () => {
             if (description.style.display === 'none') {
                 description.style.display = 'block';
-                description.textContent = article.description + ' More content';
             } else {
                 description.style.display = 'none';
             }
         });
-
         blogContainer.appendChild(blogCard);
-        
     });
 }
 
@@ -71,5 +90,5 @@ function displayBlogs(articles) {
         displayBlogs(articles);
     } catch (error) {
         console.error("Error displaying blogs", error);
-    }
+    } 
 })();
