@@ -5,7 +5,7 @@ const apiKey = '7e6add09d1fa415088ac94d6924e3f1b';
 
 async function fetchRandomNews() {
     try {
-        const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=10&apiKey=${apiKey}`;
+        const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=8&apiKey=${apiKey}`;
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
