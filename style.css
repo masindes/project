@@ -43,6 +43,7 @@ nav{
    border-radius: 10px;
    font-size: 18px;
    color: #05c5ff;
+   
 }
 #Search-button{
     padding: 10px 20px;
@@ -113,4 +114,54 @@ nav{
     .blog-card{
        width: 100%; 
     }
+}
+
+.item {
+    position: relative; /* Position relative for absolute tooltip positioning */
+    display: inline-block; /* Inline block for item button */
+}
+
+.item-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tooltip {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position below the button */
+    left: 50%;
+    transform: translateX(-50%); /* Center the tooltip */
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 100; /* Ensure tooltip is above other elements */
+    width: 200px; /* Set a width for the tooltip */
+}
+
+.tooltip-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.tooltip-content button {
+    margin-top: 5px;
+    color: #4CAF50; /* Green for category buttons */
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer;
+}
+
+.tooltip-content button:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Show tooltip on hover */
+.item:hover .tooltip {
+    display: block; /* Show tooltip when hovering over the item */
 }

@@ -1,9 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
+
     const blogContainer = document.getElementById("blogContainer");
     const apiKey = '7e6add09d1fa415088ac94d6924e3f1b'; // Replace with your actual API key
     const searchField = document.getElementById('search-input');
     const searchButton = document.getElementById('Search-button');
-    const themeToggle = document.getElementById('themeToggle');
 
     // Function to fetch random news
     async function fetchRandomNews() {
@@ -110,9 +109,3 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Error displaying blogs", error);
         }
     })();
-
-    // Theme Toggle Functionality
-    themeToggle.addEventListener('change', () => {
-        document.body.classList.toggle('dark-mode');
-    });
-});
