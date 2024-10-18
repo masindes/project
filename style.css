@@ -29,6 +29,7 @@ body{
 }
 nav{
     box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+    background: #001524;
 }
 #logo{
     color: rgb(255, 255, 255);
@@ -73,11 +74,11 @@ nav{
     cursor: pointer;
     padding: 0.5em;
     margin: 10px;
-    background: #ffffff;
+    background: #ccc5b9;
 
 }
 .blog-card:hover{
-    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgb(255, 255, 255);
 }
 .blog-card img{
     width: 100%;
