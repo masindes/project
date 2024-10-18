@@ -7,7 +7,7 @@
     // Function to fetch random news
     async function fetchRandomNews() {
         try {
-            const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=12&apiKey=${apiKey}`;
+            const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=${apiKey}`;
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
@@ -39,7 +39,7 @@
     // Function to fetch news based on query
     async function fetchNewsQuery(query) {
         try {
-            const apiUrl = `https://newsapi.org/v2/everything?q=${query}&pageSize=12&apiKey=${apiKey}`;
+            const apiUrl = `https://newsapi.org/v2/everything?q=${query}&pageSize=100&apiKey=${apiKey}`;
             const response = await fetch(apiUrl);
             const data = await response.json();
             return data.articles;
