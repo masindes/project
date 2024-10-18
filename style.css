@@ -4,7 +4,8 @@
     box-sizing: border-box;
     background-size: #81c6e6;
     color: #333;
-    transition:  background-color 0.3s,color 0.3s; 
+    transition:  background-color 0.3s,color 0.3s;
+    
 }
 main.body.dark-mode {
     background-color: #333; /* Dark mode background */
@@ -13,6 +14,7 @@ main.body.dark-mode {
 
 body{
     position: relative;
+    background:#354f52; 
 }
 /* Global styles */
 .obj-width{
@@ -26,11 +28,10 @@ body{
     padding: 1.3em 0;
 }
 nav{
-    background-color: rgb(220, 226, 214);
     box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
 }
 #logo{
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     letter-spacing: 2px;
     font-size: 3em;
@@ -47,7 +48,7 @@ nav{
 }
 #Search-button{
     padding: 10px 20px;
-    background-color: rgb(5, 5, 5);
+    background-color: #070707;
     border: none;
     font-size: 15px;
     color: #ffffff;
@@ -57,7 +58,7 @@ nav{
     margin-right: 5px;
 }
 #Search-button:hover{
-    color: #ffbb00;
+    color: #d1d4d4;
 }
 #blogContainer{
     padding: 3em 4em;
@@ -72,6 +73,7 @@ nav{
     cursor: pointer;
     padding: 0.5em;
     margin: 10px;
+    background: #ffffff;
 
 }
 .blog-card:hover{
@@ -122,14 +124,4 @@ nav{
 }
 .category-item {
     position: relative; /* Needed for absolute positioning of tooltips */
-}
-.item-button {
-    padding: 10px 15px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff; /* Bootstrap primary color */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
