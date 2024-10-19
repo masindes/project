@@ -127,16 +127,18 @@ nav{
     position: relative; /* Needed for absolute positioning of tooltips */
 }
 footer {
-    background-color: #333; /* Dark background color */
+    background-color: #001524; /* Dark background color */
     color: #fff; /* White text color */
     padding: 20px 0; /* Vertical padding */
     text-align: center; /* Centered text */
+    box-shadow: 0 7px 10px rgba(255, 255, 255, 0.979);
 }
 
 .footer-content {
     max-width: 1200px; /* Set a max width for the content */
     margin: 0 auto; /* Center the content horizontally */
     padding: 0 20px; /* Horizontal padding */
+    
 }
 
 .footer-content p {
@@ -162,8 +164,18 @@ footer {
 
 .footer-content span:hover {
     text-decoration: underline; /* Underline on hover for better visibility */
+    color: #ffffff; /* Darker color when active */
 }
 
 .footer-content span:active {
     color: #0088cc; /* Darker color when active */
+}
+p1{
+    color: white;
+    font-size: 1.5em;  
+}
+p2{
+    color: white;
+    font-size: 1.2em;
+    margin-top: 10px;
 }
