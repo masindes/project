@@ -4,6 +4,7 @@ const searchField = document.getElementById('search-input');
 const searchButton = document.getElementById('Search-button');
 
 // Function to fetch random news
+
 async function fetchRandomNews() {
     const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=${apiKey}`;
     return fetch(apiUrl)
@@ -19,6 +20,7 @@ async function fetchRandomNews() {
 }
 
 // Search functionality with debounce
+
 let debounceTimeout;
 const debounce = (func, delay) => {
     return (...args) => {
@@ -42,7 +44,9 @@ searchField.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') debouncedSearchNews();
 });
 
+
 // Function to fetch news based on query
+
 async function fetchNewsQuery(query) {
     const apiUrl = `https://newsapi.org/v2/everything?q=${query}&pageSize=100&apiKey=${apiKey}`;
     return fetch(apiUrl)
@@ -55,21 +59,26 @@ async function fetchNewsQuery(query) {
 }
 
 // Function to display blogs
+
 function displayBlogs(articles) {
     if (!blogContainer) {
         console.error('blogContainer not found');
         return;
     }
 
+    // Clear existing blogs
     blogContainer.innerHTML = ""; // Clear existing blogs
 
-    const fragment = document.createDocumentFragment(); // Use a document fragment for performance
+    // Use a document fragment for performance
+    const fragment = document.createDocumentFragment(); 
     articles.forEach((article) => {
         const blogCard = document.createElement("div");
         blogCard.classList.add("blog-card");
 
         const img = document.createElement("img");
-        img.src = article.urlToImage || ''; // Placeholder image
+
+        // Placeholder image
+        img.src = article.urlToImage || ''; 
         img.alt = article.title;
 
         const title = document.createElement("h2");
@@ -87,7 +96,9 @@ function displayBlogs(articles) {
 
         const fullDescription = document.createElement("p");
         fullDescription.textContent = article.description || 'No description available.';
-        fullDescription.style.display = 'none'; // Hide full description by default
+        
+         // Hide full description by default
+        fullDescription.style.display = 'none';
 
         readMoreButton.addEventListener("click", (event) => {
             event.stopPropagation();
@@ -106,13 +117,17 @@ function displayBlogs(articles) {
             description.style.display = description.style.display === 'none' ? 'block' : 'none';
         });
 
-        fragment.appendChild(blogCard); // Append the blog card to the document fragment
+        // Append the blog card to the document fragment
+        fragment.appendChild(blogCard); 
     });
 
-    blogContainer.appendChild(fragment); // Append the fragment to the DOM in one go
+
+    // Append the document fragment to the blog container to render all blogs at once
+    blogContainer.appendChild(fragment); 
 }
 
 // Immediately Invoked Function Expression to fetch random news
+
 (async () => {
     const articles = await fetchRandomNews();
     displayBlogs(articles);
