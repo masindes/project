@@ -127,8 +127,8 @@ nav{
     position: relative; /* Needed for absolute positioning of tooltips */
 }
 footer {
-    background-color: #001524; /* Dark background color */
-    color: #ffffff; /* White text color */
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text color */
     padding: 20px 0; /* Vertical padding */
     text-align: center; /* Centered text */
 }
@@ -154,13 +154,16 @@ footer {
     margin: 0 15px; /* Space between list items */
 }
 
-.footer-content a {
-    color: #fff; /* White links */
-    text-decoration: none; /* Remove underline from links */
+.footer-content span {
+    color: #00aaff; /* Color for the social media text */
+    cursor: pointer; /* Change cursor to pointer for better UX */
     transition: color 0.3s; /* Transition effect for hover */
 }
 
-.footer-content a:hover {
-    color: #00aaff; /* Change color on hover */
+.footer-content span:hover {
+    text-decoration: underline; /* Underline on hover for better visibility */
 }
-    
+
+.footer-content span:active {
+    color: #0088cc; /* Darker color when active */
+}
