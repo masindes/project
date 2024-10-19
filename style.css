@@ -28,7 +28,7 @@ body{
     padding: 1.3em 0;
 }
 nav{
-    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 7px 10px rgb(175, 175, 175);
     background: #001524;
 }
 #logo{
