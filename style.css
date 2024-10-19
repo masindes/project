@@ -126,3 +126,41 @@ nav{
 .category-item {
     position: relative; /* Needed for absolute positioning of tooltips */
 }
+footer {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text color */
+    padding: 20px 0; /* Vertical padding */
+    text-align: center; /* Centered text */
+}
+
+.footer-content {
+    max-width: 1200px; /* Set a max width for the content */
+    margin: 0 auto; /* Center the content horizontally */
+    padding: 0 20px; /* Horizontal padding */
+}
+
+.footer-content p {
+    margin: 10px 0; /* Margin for paragraphs */
+}
+
+.footer-content ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 10px 0; /* Margin for the list */
+}
+
+.footer-content li {
+    display: inline; /* Display list items in a row */
+    margin: 0 15px; /* Space between list items */
+}
+
+.footer-content a {
+    color: #fff; /* White links */
+    text-decoration: none; /* Remove underline from links */
+    transition: color 0.3s; /* Transition effect for hover */
+}
+
+.footer-content a:hover {
+    color: #00aaff; /* Change color on hover */
+}
+    

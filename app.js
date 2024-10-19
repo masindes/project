@@ -5,56 +5,53 @@ const searchButton = document.getElementById('Search-button');
 
 // Function to fetch random news
 async function fetchRandomNews() {
-    try {
-        const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=${apiKey}`;
-        const response = await fetch(apiUrl);
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok: ' + response.statusText);
-        }
-
-        const data = await response.json();
-        console.log(data); // log data here
-        return data.articles;
-    } catch (error) {
-        console.error('Error fetching random news:', error);
-        return [];
-    }
+    const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=${apiKey}`;
+    return fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok: ' + response.statusText);
+            return response.json();
+        })
+        .then(data => data.articles)
+        .catch(error => {
+            console.error('Error fetching random news:', error);
+            return [];
+        });
 }
 
-// Search functionality
+// Search functionality with debounce
+let debounceTimeout;
+const debounce = (func, delay) => {
+    return (...args) => {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => func.apply(this, args), delay);
+    };
+};
+
 const searchNews = async () => {
     const query = searchField.value.trim();
-    if (query !== "") {
-        try {
-            const articles = await fetchNewsQuery(query);
-            displayBlogs(articles);
-        } catch (error) {
-            console.log("Error fetching news by query", error);
-        }
+    if (query) {
+        const articles = await fetchNewsQuery(query);
+        displayBlogs(articles);
     }
 };
 
-searchButton.addEventListener('click', searchNews);
+const debouncedSearchNews = debounce(searchNews, 300);
 
-// Add event listener for Enter key press
+searchButton.addEventListener('click', debouncedSearchNews);
 searchField.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') { // Check if the pressed key is 'Enter'
-        searchNews(); // Call the search function
-    }
+    if (event.key === 'Enter') debouncedSearchNews();
 });
 
 // Function to fetch news based on query
 async function fetchNewsQuery(query) {
-    try {
-        const apiUrl = `https://newsapi.org/v2/everything?q=${query}&pageSize=100&apiKey=${apiKey}`;
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        return data.articles;
-    } catch (error) {
-        console.error('Error fetching news by query:', error);
-        return [];
-    }
+    const apiUrl = `https://newsapi.org/v2/everything?q=${query}&pageSize=100&apiKey=${apiKey}`;
+    return fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => data.articles)
+        .catch(error => {
+            console.error('Error fetching news by query:', error);
+            return [];
+        });
 }
 
 // Function to display blogs
@@ -64,7 +61,9 @@ function displayBlogs(articles) {
         return;
     }
 
-    blogContainer.innerHTML = "";
+    blogContainer.innerHTML = ""; // Clear existing blogs
+
+    const fragment = document.createDocumentFragment(); // Use a document fragment for performance
     articles.forEach((article) => {
         const blogCard = document.createElement("div");
         blogCard.classList.add("blog-card");
@@ -74,31 +73,28 @@ function displayBlogs(articles) {
         img.alt = article.title;
 
         const title = document.createElement("h2");
-        const truncatedTitle = article.title.length > 30 ? article.title.slice(0, 30) + "..." : article.title;
-        title.textContent = truncatedTitle;
+        title.textContent = article.title.length > 30 ? article.title.slice(0, 30) + "..." : article.title;
 
         const description = document.createElement("p");
-        const truncatedDescription = typeof article.description === 'string' && article.description.length > 200
+        description.textContent = (typeof article.description === 'string' && article.description.length > 200)
             ? article.description.slice(0, 200) + "..."
-            : article.description || 'No description available.'; // Fallback to a default message if not available
-        
-        description.textContent = truncatedDescription; // Truncate the description
+            : article.description || 'No description available.';
 
         // Create a Read More button
         const readMoreButton = document.createElement("button");
         readMoreButton.textContent = "Read More";
-        readMoreButton.classList.add("read-more"); // Add a class for styling if needed
-        
+        readMoreButton.classList.add("read-more");
+
         const fullDescription = document.createElement("p");
         fullDescription.textContent = article.description || 'No description available.';
         fullDescription.style.display = 'none'; // Hide full description by default
 
-        // Event listener for Read More button
         readMoreButton.addEventListener("click", (event) => {
-            event.stopPropagation(); // Prevent triggering the card click event
+            event.stopPropagation();
             fullDescription.style.display = fullDescription.style.display === 'none' ? 'block' : 'none';
         });
 
+        // Append elements to the blog card
         blogCard.appendChild(img);
         blogCard.appendChild(title);
         blogCard.appendChild(description);
@@ -110,16 +106,14 @@ function displayBlogs(articles) {
             description.style.display = description.style.display === 'none' ? 'block' : 'none';
         });
 
-        blogContainer.appendChild(blogCard);
+        fragment.appendChild(blogCard); // Append the blog card to the document fragment
     });
+
+    blogContainer.appendChild(fragment); // Append the fragment to the DOM in one go
 }
 
 // Immediately Invoked Function Expression to fetch random news
 (async () => {
-    try {
-        const articles = await fetchRandomNews();
-        displayBlogs(articles);
-    } catch (error) {
-        console.error("Error displaying blogs", error);
-    }
+    const articles = await fetchRandomNews();
+    displayBlogs(articles);
 })();
