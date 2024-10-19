@@ -118,14 +118,6 @@ nav{
        width: 100%; 
     }
 }
-.categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Space between categories */
-}
-.category-item {
-    position: relative; /* Needed for absolute positioning of tooltips */
-}
 footer {
     background-color: #001524; /* Dark background color */
     color: #fff; /* White text color */
